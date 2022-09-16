@@ -103,6 +103,10 @@ class Network(BaseNetwork):
         return y_t, ret_arr
 
     def forward(self, y_0, y_cond=None, mask=None, noise=None):
+        '''
+        y_0: gt
+        y_cond: noisy
+        '''
         # sampling from p(gammas)
         b, *_ = y_0.shape
         t = torch.randint(1, self.num_timesteps, (b,), device=y_0.device).long()
